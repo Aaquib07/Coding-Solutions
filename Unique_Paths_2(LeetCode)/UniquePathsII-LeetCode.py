@@ -1,27 +1,32 @@
-def mazeObstaclesTopBottom(n, m, grid):
-
-    def findPath(row, col, dp):
-        if row >= 0 and col >= 0 and grid[row][col] == 1:
-            return 0
-
-        if row == 0 and col == 0:
-            return 1
+class Solution:
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
         
-        if row < 0 or col < 0:
-            return 0
+        def findPath(row, col, dp):
+            if row >= 0 and col >= 0 and obstacleGrid[row][col] == 1:
+                return 0
 
-        if dp[row][col] != -1:
+            if row == 0 and col == 0:
+                return 1
+            
+            if row < 0 or col < 0:
+                return 0
+
+            if dp[row][col] != -1:
+                return dp[row][col]
+            
+            upward = findPath(row - 1, col, dp)
+            leftward = findPath(row, col - 1, dp)
+
+            dp[row][col] = upward + leftward
             return dp[row][col]
-        
-        upward = findPath(row - 1, col, dp)
-        leftward = findPath(row, col - 1, dp)
-
-        dp[row][col] = upward + leftward
-        return dp[row][col]
     
-    dp = [[-1] * n for _ in range(m)]
-    result = findPath(m - 1, n - 1, dp)
-    return result
+        m = len(obstacleGrid)
+        n = len(obstacleGrid[0])
+        dp = [[-1] * n for _ in range(m)]
+        result = findPath(m - 1, n - 1, dp)
+        return result
+
+
 
 def mazeObstaclesBottomUp(n, m, grid):
 
