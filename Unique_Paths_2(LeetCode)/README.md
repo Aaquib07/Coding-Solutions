@@ -96,3 +96,47 @@ for i in range(m):
 ```python
 return dp[m - 1][n - 1]
 ```
+
+## Intuition for Space-Optimized Bottom Up DP
+As we observe that only the previous row is involved in the calculation for the current row value, so we can use a couple of 1-d dp arrays storing only the current row and previous row values.
+
+## Approach
+1. We initialize a 1-d dp array to store the previous row values with all the values initially set to 0.
+```python
+prev = [0] * n
+```
+2. We iterate through all the rows, and for every row we initialize another 1-d dp array to store the current row value.
+```python
+for i in range(m):
+    temp = [0] * n
+```
+3. We check if the cell (row, col) contains an obstacle, we set temp[col] to 0 as we cannot find any path.
+```python
+    for j in range(n):
+        if grid[i][j] == 1:
+            temp[j] = 0
+```
+4. If the cell is the starting cell, we set temp[col] to 1 as we found a path.
+```python
+        elif i == 0 and j == 0:
+            temp[j] = 1
+```
+5. We take the previous row value and current row value at index column - 1 to calculate number of paths for temp[col].
+```python
+        else:
+            upward = 0
+            leftward = 0
+            if i > 0:
+                upward = prev[j]
+            if j > 0:
+                leftward = temp[j - 1]
+            temp[j] = upward + leftward
+```
+6. We pass the values of the current rows to the previous rows for next iteration.
+```python
+    prev = temp
+```
+7. Lastly we return the number of unique paths to reach bottom-right cell.
+```python
+return prev[n - 1]
+```
