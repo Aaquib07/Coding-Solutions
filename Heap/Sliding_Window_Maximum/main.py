@@ -1,4 +1,3 @@
-# USING DE_QUEUE
 from typing import List
 
 class Solution:
