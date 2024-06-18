@@ -7,7 +7,7 @@ Given an integer array nums of length `n` where all the integers of nums are in 
 - 1 <= nums[i] <= n
 
 # Solution
-## Approach 1 (TC: O(N), SC: O(N))
+## Approach 1 $(TC: O(N), SC: O(N))$
 In this approach, we use a hashmap to store the frequencies of elements in the list. Then we iterate through the list and update the frequency of element in the hashmap. Once the hashmap is updated, we iterate over the hashmap and check the frequencies of the elements. If the frequency of an element is greater than 1, we add the element into our result. 
 
 ### Code
@@ -41,7 +41,7 @@ if __name__ == '__main__':
     print(result)
 ```
 
-## Approach 2 (TC: O(N), SC: O(1))
+## Approach 2 $(TC: O(N), SC: O(1))$
 In this approach, we take the advantage of the fact that the elements lies between 1 and `n`. We just iterate through the list and mark the element at index `abs(current_element) - 1` as negative to indicate that it has occurred. If we ever find that the element at index `abs(current_index) - 1` is negative that means the current element has occurred previously that led to the element at index `abs(current_index) - 1` being negative. So we just add the absolute value of current element to our result.
 
 **Code for this approach is given in the python file**

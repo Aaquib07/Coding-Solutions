@@ -19,7 +19,7 @@ The answer is guaranteed to fit in a 32-bit signed integer.
 - 0 <= `capital[i]` <= 10<sup>9</sup>
 
 # Solution
-## Approach (TC: O(N * logN + K * logN), SC: O(N))
+## Approach $(TC: O(N \cdot \log N + K \cdot logN), SC: O(N))$
 Through the question we can observe that we always need the smallest capital so that we can afford to start the project. Therefore, we start by storing the capital needed and profit gained by the projects in a list. Then we sort the list according to the capital in ascending order. 
 
 ```python

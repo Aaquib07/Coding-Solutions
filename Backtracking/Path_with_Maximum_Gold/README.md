@@ -16,7 +16,7 @@ Return the maximum amount of gold you can collect under the conditions:
 - There are at most 25 cells containing gold.
 
 # Solution
-## Approach (TC: O(G * 3<sup>G</sup>), SC: O(G))
+## Approach $(TC: O(G \cdot 3^G), SC: O(G))$
 #### G stands for the number of gold cells.
 
 Since we can start from any cell in the grid to find out the maximum gold, so we iterate through each and every cell as the starting cell. For each cell, we check whether the cell lies inside the grid or whether the cell has been visited before, returning 0 in either cases. Otherwise, we just take the entire gold from the current cell. Then we perform backtracking by traversing the remaining 3 directions (not 4 directions because we can't go back to the cell that has been visited before). Lastly we return the result.

@@ -12,7 +12,7 @@ Return true if there is a cycle in the linked list. Otherwise, return false.
 - `pos` is -1 or a valid index in the linked-list.
 
 # Solution
-## Approach (TC: O(N), SC: O(1))
+## Approach $(TC: O(N), SC: O(1))$
 We start by initializing two pointers, namely `slow` and `fast`. At the start, both pointers point to the head of the Linked List. Then we start iterating until `fast` becomes null or the next node pointed to by `fast` becomes null. During the iteration, `slow` pointer jumps by one node and `fast` pointer jumps by two nodes. If both the pointers meet at some point, that means there is a cycle in the Linked List. If they never meet, then there is no cycle.
 
 **Code for this approach is given in the python file**

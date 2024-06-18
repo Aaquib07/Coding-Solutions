@@ -7,11 +7,11 @@ Given the power consumption of `n` processes and the range of power consumption 
 
 
 ### Constraints
-- 1 <= n <= 2 * 10^5^
-- 1 <= m <= 2 * 10^5^
+- 1 <= n <= 2 * 10<sup>5</sup>
+- 1 <= m <= 2 * 10<sup>5</sup>
 
 # Solution
-## Approach 1 (TC: O(M * N), SC: O(1))
+## Approach 1 $(TC: O(M \cdot N), SC: O(1))$
 The very first solution that comes to our mind is that to iterate through all the power ranges of processors and then check for each of the powers of processes whether it lies in between the range. We then simply store the count and sum of those powers of processes in our result.
 
 ### Code
@@ -35,7 +35,7 @@ def processExecution(power: List[int], minPower: List[int], maxPower: List[int])
     return results
 ```
 
-## Approach 2 (TC: O(N * log(N) + M * log(N)), SC: O(N))
+## Approach 2 $(TC: O(N \cdot \log N + M \cdot \log N), SC: O(N))$
 The above approach exceeds the time limit. So, in our optimized approach, we sort the power list in non-decreasing order (`sorted_power`). Then we initialize a list `power_sum` to store prefix sum of powers of processes. The calculation of prefix sum of powers helps us to determine the sum of the powers of valid processes efficiently.
 
 Then we iterate through the range of powers of processors and then find the leftmost index (`left_index`) in `sorted_power` using binary search where min power of current processor can be inserted to keep `sorted_power` list sorted (all the processes to the right of this index will be candidates for valid processes). Similarly, we find the rightmost index (`right_index`) in the `sorted_power` list using binary search where max power of current processor can be inserted to keep the `sorted_power` list sorted (all the processes to the left of this index will be candidates for valid processes).

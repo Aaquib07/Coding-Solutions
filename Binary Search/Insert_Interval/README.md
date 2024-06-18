@@ -15,7 +15,7 @@ Return intervals after the insertion.
 - 0 <= start <= end <= 10<sup>5</sup>
 
 # Solution
-## Approach 1 (TC: O(N), SC: O(N))
+## Approach 1 $(TC: O(N), SC: O(N))$
 The first approach is to compare the newInterval with all the intervals one by one. We compare the ending time of the interval at index i with the start time of the newInterval. If the ending time of the i<sup>th</sup> index interval is less than the starting time of the newInterval, then we can add the i<sup>th</sup> index interval in our result (as there is no overlap) and increment the index. But if the ending time of the newInterval is greater than the starting time of the interval at index i, then we can have several cases:
 
 1. Starting time of the newInterval may be less than that of i<sup>th</sup> index interval
@@ -70,7 +70,7 @@ if __name__ == '__main__':
     print(result)
 ```
 
-## Approach 2 (TC: O(N), SC: O(N))
+## Approach 2 $(TC: O(N), SC: O(N))$
 The second approach is to use binary search in place of linear search to search for the correct position to insert the newInterval into the intervals array. Once we insert the newInterval, then we iterate over the intervals and add them into our result based on the above cases (Only cases 3 and 4 are considered as because the intervals array is sorted so we don't have to worry about the start time in this approach).
 
 **Code for this approach is given in the python file**
