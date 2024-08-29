@@ -13,7 +13,7 @@ Return the maximum total energy boost you can gain in the next `n` hours.
 - 1 <= `energyDrinkA[i]`, `energyDrinkB[i]` <= 10<sup>5</sup>
 
 # Solution
-## Approach 1 $(TC: O(2^N), SC: O(stackSpace))$
+## Approach 1 $(TC: O(2^N), SC: O(Recursion Stack Space))$
 In this approach, we take the help of recursion to solve the problem. We define a function `recursion(index: int, drinkATaken: bool)` in which `index` signifies the current index and `drinkATaken` signifies whether drinkA has been taken currently or not. The base case is when the index goes out of bound (we return 0 in that case because no energy can be gained further). Then we check if drink A is taken or not. If it is taken, then we add `energyDrinkA[index]` and recursively take the maximum of two scenarios: 
 
 1. Take the energy from drink A at `index + 1`
@@ -53,7 +53,7 @@ class Solution:
         return max(recursion(0, True), recursion(0, False))
 ```
 
-## Approach 2 $(TC: O(N), SC: O(N) + O(stackSpace))$
+## Approach 2 $(TC: O(N), SC: O(N + Recursion Stack Space)$
 We can optimize the above recursive solution using memoization. This is because the problem involves overlapping subproblems. In this approach, we initialize a 2d array `memo` of dimension N x 2. We store the computed value at each index to our `memo` so that repetitive computation does not take place. The remaining process remains the same.
 
 ### Code

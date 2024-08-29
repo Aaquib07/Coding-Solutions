@@ -1,10 +1,10 @@
 # Problem
-Given an integer array nums of length `n` where all the integers of nums are in the range [1, n] and each integer appears once or twice, return an array of all the integers that appears twice.
+Given an integer array `nums` of length `n` where all the integers of nums are in the range [1, n] and each integer appears once or twice, return an array of all the integers that appears twice.
 
 ### Constraints
-- n == nums.length
-- 1 <= n <= 10^5^
-- 1 <= nums[i] <= n
+- n == `nums.length`
+- 1 <= n <= 10<sup>5</sup>
+- 1 <= `nums[i]` <= n
 
 # Solution
 ## Approach 1 $(TC: O(N), SC: O(N))$

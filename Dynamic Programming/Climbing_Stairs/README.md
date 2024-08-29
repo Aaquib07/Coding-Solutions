@@ -6,7 +6,7 @@ Each time you can either climb 1 or 2 steps. In how many distinct ways can you c
 - 1 <= n <= 45
 
 # Solution
-## Approach 1 $(TC: O(2^N), SC: O(Recursion Stack Space))$
+## Approach 1 $(TC: O(2^N), SC: O(RecursionStack Space))$
 Our first brute force approach is recursion. We aim to start the recursion from the n^th^ step to the 0^th^ step. The base case is when we need to climb 0 stair and 1 stair. There's only 1 way in which we can climb no stairs or 1 stair. The we recursively calculate the number of ways to climb  from the (i - 1)^th^ and (i - 2)^th^ steps and add them. Lastly we return the total number of ways.
 
 ### Code
@@ -27,7 +27,7 @@ class Solution:
         return recursion(n)
 ```
 
-## Approach 2 $(TC: O(N), SC: O(N) + O(Recursion Stack Space))$
+## Approach 2 $(TC: O(N), SC: O(N + Recursion Stack Space)$
 Our second approach is memoization. We are able to memoize the recursive solution because there are overlapping subproblems. We can cache the results so that we can avoid re-computing them in the future. Since only 1 parameter is varying in this problem - index, cache array (or dp array) needs to be 1 dimensional and it keeps track of the values computed at each index. Here the only difference that exists from the recursive solution is that we store the values that we get from recursion and just make an additional check if the calculation for the current index has been done already or not, returning the value if done already.
 
 ### Code

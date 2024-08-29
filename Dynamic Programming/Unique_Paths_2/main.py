@@ -1,58 +1,39 @@
+from typing import List
+
 class Solution:
-    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
-        
-        def findPath(row, col, dp):
-            if row >= 0 and col >= 0 and obstacleGrid[row][col] == 1:
-                return 0
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int: 
+        m = len(obstacleGrid)    # No. of rows
+        n = len(obstacleGrid[0])    # No. of columns
 
-            if row == 0 and col == 0:
-                return 1
-            
-            if row < 0 or col < 0:
-                return 0
-
-            if dp[row][col] != -1:
-                return dp[row][col]
-            
-            upward = findPath(row - 1, col, dp)
-            leftward = findPath(row, col - 1, dp)
-
-            dp[row][col] = upward + leftward
-            return dp[row][col]
-    
-        m = len(obstacleGrid)
-        n = len(obstacleGrid[0])
+        # Stores the no. of ways of reaching any cell starting from cell (0, 0)
         dp = [[-1] * n for _ in range(m)]
-        result = findPath(m - 1, n - 1, dp)
-        return result
 
-
-
-def mazeObstaclesBottomUp(n, m, grid):
-
-    def findPath(dp):
+        # Iterate through every cell from (0, 0)
         for i in range(m):
             for j in range(n):
-                if grid[i][j] == 1:
+                # If the cell contains an obstacle
+                if obstacleGrid[i][j] == 1:
+                    # There is no ways
                     dp[i][j] = 0
-
+                # If cell (0, 0) is reached
                 elif i == 0 and j == 0:
+                    # Found a way
                     dp[i][j] = 1
-
+                # Otherwise, add the number of ways returned from left and up directions
                 else:
                     upward = 0
                     leftward = 0
                     if i > 0:
-                        upward = dp[i - 1][j]
+                        upward += dp[i - 1][j]
                     if j > 0:
-                        leftward = dp[i][j - 1]
-
+                        leftward += dp[i][j - 1]
                     dp[i][j] = upward + leftward
+        
+        # Return the no. of ways of reaching cell (m - 1, n - 1)
         return dp[m - 1][n - 1]
-    
-    dp = [[-1] * n for _ in range(m)]
-    result = findPath(dp)
-    return result
+
+
+
 
 def mazeObstaclesBottomUpOptimized(n, m, grid):
     prev = [0] * n

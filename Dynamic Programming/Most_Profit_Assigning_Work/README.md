@@ -1,5 +1,5 @@
 # Problem
-You have `n` jobs and `m` workers. You are given three arrays: difficulty, profit, and worker where:
+You have `n` jobs and `m` workers. You are given three arrays: `difficulty`, `profit`, and `worker` where:
 
 - `difficulty[i]` and `profit[i]` are the difficulty and the profit of the i<sup>th</sup> job, and 
 
@@ -11,9 +11,9 @@ For example, if three workers attempt the same job that pays $1, then the total 
 Return the maximum profit we can achieve after assigning the workers to the jobs.
 
 ### Constraints
-- n == difficulty.length
-- n == profit.length
-- m == worker.length
+- n == `difficulty.length`
+- n == `profit.length`
+- m == `worker.length`
 - 1 <= n, m <= 10<sup>4</sup>
 - 1 <= `difficulty[i]`, `profit[i]`, `worker[i]` <= 10<sup>5</sup>
 
@@ -63,14 +63,6 @@ class Solution:
             result += max_profit
         
         return result
-
-
-if __name__ == '__main__':
-    difficulty = [2, 4, 6, 8, 10]
-    profit = [10, 20, 30, 40, 50]
-    worker = [4, 5, 6, 7]
-    result = Solution().maxProfitAssignment(difficulty, profit, worker)
-    print(result)
 ```
 
 ## Approach 2 $(TC: O(N \cdot \log N + M \cdot \log N ), SC: O(N))$
@@ -118,14 +110,6 @@ class Solution:
             result += max_profit
         
         return result
-
-
-if __name__ == '__main__':
-    difficulty = [2, 4, 6, 8, 10]
-    profit = [10, 20, 30, 40, 50]
-    worker = [4, 5, 6, 7]
-    result = Solution().maxProfitAssignment(difficulty, profit, worker)
-    print(result)
 ```
 
 ## Approach 3 $(TC: O(N \cdot \log N + M \cdot \log M ), SC: O(N))$
@@ -169,14 +153,6 @@ class Solution:
             result += max_profit 
         
         return result
-
-
-if __name__ == '__main__':
-    difficulty = [2, 4, 6, 8, 10]
-    profit = [10, 20, 30, 40, 50]
-    worker = [4, 5, 6, 7]
-    result = Solution().maxProfitAssignment(difficulty, profit, worker)
-    print(result)
 ```
 
 ## Approach 4 $(TC: O(M \cdot \log N + M \cdot \log M ), SC: O(N))$
@@ -210,14 +186,6 @@ class Solution:
                 result += -jobs_info[0][0]
         
         return result
-
-
-if __name__ == '__main__':
-    difficulty = [2, 4, 6, 8, 10]
-    profit = [10, 20, 30, 40, 50]
-    worker = [4, 5, 6, 7]
-    result = Solution().maxProfitAssignment(difficulty, profit, worker)
-    print(result)
 ```
 
 ## Approach 5 $(TC: O(M + N + MaxAbility ), SC: O(MaxAbility))$

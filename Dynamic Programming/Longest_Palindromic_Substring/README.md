@@ -6,7 +6,7 @@ Given a string `s`, return the longest palindromic substring in s.
 - `s` consist of only digits and English letters.
 
 # Solution
-## Approach 1 $(TC: O(2^N), SC: O(stackSpace))$
+## Approach 1 $(TC: O(2^N), SC: O(Recursion Stack Space))$
 
 ### Code
 ```python
