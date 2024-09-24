@@ -2,38 +2,41 @@ from typing import List
 
 class Solution:
     def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
-        
-        def topdowm(index: int, prev_index: int) -> List[int]:
-            # If length of array exceeded
-            if index == n:
-                return []
-            
-            # Return the result if it has been computed previously
-            if (index, prev_index) in memo:
-                return memo[(index, prev_index)]
-            
-            # Expand the longest subsequence without taking the current index element
-            longest_subsequence = topdowm(index + 1, prev_index)
-            
-            # If no element is selected or element at prev_index exactly divides the element at current index
-            if prev_index == -1 or nums[index] % nums[prev_index] == 0:
-                # Add the current index element and recursively go to next index
-                temp = [nums[index]] + topdowm(index + 1, index)
-                # If a greater length subsequence is obtained
-                if len(temp) > len(longest_subsequence):
-                    # Update the longest subsequence
-                    longest_subsequence = temp
-            
-            # Store the longest subsequence into our memo
-            memo[(index, prev_index)] = longest_subsequence
-            return memo[(index, prev_index)]
-        
-
-        n = len(nums)    # Length of array
+        # Length of the array
+        n = len(nums)
         # Sort the array
         nums.sort()
-        memo = {}
-        return topdowm(0, -1)
+        # Stores the length of the longest divisible subsequence ending with nums[i]
+        dp = [1] * n
+        # Stores the index of previous element in the longest divisible subsequence ending at nums[i]
+        prev = [-1] * n
+        # Stores the index of the longest divisible subsequence
+        max_index = 0
+
+        for index in range(n):
+            for prev_index in range(index):
+                # If the current index element is divisible by previous index element
+                if nums[index] % nums[prev_index] == 0:
+                    # Update the length of longest divisible subsequence and the index of previous element w.r.t current index element
+                    if dp[index] < dp[prev_index] + 1:
+                        dp[index] = 1 + dp[prev_index]
+                        prev[index] = prev_index
+            
+            # Update the max_index if a longer subsequence found
+            if dp[index] > dp[max_index]:
+                max_index = index
+        
+        # Stores the longest divisble subsequence
+        result = []
+        # Reconstruct the subsequence
+        current = max_index
+        while current != -1:
+            result.append(nums[current])
+            current = prev[current]
+        
+        # Return the result in ascending order
+        return result[::-1]
+
 
 
 if __name__ == '__main__':
